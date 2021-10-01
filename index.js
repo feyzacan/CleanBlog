@@ -1,16 +1,16 @@
 const express = require('express');
+const ejs = require('ejs');
+const path = require('path');
 
 const app = express();
 
-app.get('/', (req, res) => {
+app.set("view engine", "ejs");
 
-    const blog = {
-      id: 1,
-      name: "Blog Title",
-      description: "Blog description"
-    }
-    res.send(blog)
-  })
+app.use(express.static('public'));
+
+app.get('/', (req, res) => {
+  res.render('index')
+});
   
   const port = 3000;
   app.listen(port, () => {
